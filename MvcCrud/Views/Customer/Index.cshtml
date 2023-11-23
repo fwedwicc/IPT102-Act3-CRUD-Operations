@@ -1,0 +1,100 @@
+﻿@model IEnumerable<MvcCrud.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Data List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" }) <!-- Applying button style -->
+</p>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th style="color: var(--headline-color);">
+                <!-- Applying headline color -->
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th style="color: var(--headline-color);">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="color: var(--paragraph-color);">
+                    <!-- Applying paragraph color -->
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td style="color: var(--paragraph-color);">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" }) | <!-- Applying button style -->
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default" }) | <!-- Applying button style -->
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default" }) <!-- Applying button style -->
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<style>
+    /* Theme colors */
+    :root {
+        --background-color: #0f0e17;
+        --button-color: #ff8906;
+        --button-text-color: #fffffe;
+        --paragraph-color: #a7a9be;
+        --headline-color: #fffffe;
+        --container-form-color: #2e2f3e; /* New container form color */
+    }
+
+    /* Rest of the CSS with color theme */
+    body {
+        background-color: var(--background-color);
+        color: var(--paragraph-color);
+        margin: 0; /* Removing default margin */
+        font-family: Arial, sans-serif; /* Adding font */
+    }
+
+    .container {
+        width: 70%;
+        margin: 20px auto;
+        background-color: var(--container-form-color); /* Applying container form color */
+        padding: 20px; /* Adjust padding as needed */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: var(--headline-color);
+    }
+
+    .table th {
+        color: var(--headline-color); /* Applying headline color to table header */
+    }
+
+    .table td {
+        color: var(--paragraph-color); /* Applying paragraph color to table cells */
+    }
+
+    .btn {
+        padding: 8px 15px;
+        background-color: var(--button-color);
+        color: var(--button-text-color);
+        text-decoration: none;
+        margin-right: 10px;
+        margin-left: 10px;/* Adjusting margin for buttons */
+    }
+
+        .btn:hover {
+            background-color: #e0e0e0;
+            color: var(--button-text-color);
+        }
+</style>

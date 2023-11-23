@@ -1,0 +1,109 @@
+﻿@model MvcCrud.Models.Customer
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="form-horizontal">
+            <h4>Customer</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    /* Theme colors */
+    :root {
+        --background-color: #0f0e17;
+        --button-color: #ff8906;
+        --button-text-color: #fffffe;
+        --paragraph-color: #a7a9be;
+        --headline-color: #fffffe;
+        --container-form-color: #2e2f3e; /* New container form color */
+    }
+
+    /* Rest of the CSS with color theme */
+    body {
+        background-color: var(--background-color);
+        color: var(--paragraph-color);
+        margin: 0; /* Removing default margin */
+        font-family: Arial, sans-serif; /* Adding font */
+    }
+
+    .container {
+        width: 70%;
+        margin: 20px auto;
+        background-color: var(--container-form-color); /* Applying container form color */
+        padding: 20px; /* Adjust padding as needed */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2, h4 {
+        color: var(--headline-color);
+    }
+
+    .form-horizontal {
+        color: var(--paragraph-color);
+    }
+
+    .control-label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 9px; /* Adding margin */
+        color: var(--headline-color);
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid var(--paragraph-color);
+        border-radius: 4px;
+        margin-bottom: 9px; /* Adding margin */
+    }
+
+    .btn {
+        padding: 8px 15px;
+        background-color: var(--button-color);
+        color: var(--button-text-color);
+        text-decoration: none;
+    }
+</style>
+
+<div>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" }) <!-- Applying button style -->
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

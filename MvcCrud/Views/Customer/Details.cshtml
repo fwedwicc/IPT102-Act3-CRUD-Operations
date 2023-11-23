@@ -1,0 +1,103 @@
+﻿@model MvcCrud.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div class="container">
+    <div>
+        <h4>Customer</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt style="color: var(--headline-color);">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd style="color: var(--paragraph-color);">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt style="color: var(--headline-color);">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd style="color: var(--paragraph-color);">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-default" }) | <!-- Applying button style -->
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default btn-back-to-list" }) <!-- Applying button style -->
+    </p>
+</div>
+
+<style>
+    /* Theme colors */
+    :root {
+        --background-color: #0f0e17;
+        --button-color: #ff8906;
+        --button-text-color: #fffffe;
+        --paragraph-color: #a7a9be;
+        --headline-color: #fffffe;
+        --container-form-color: #2e2f3e; /* New container form color */
+    }
+
+    /* Rest of the CSS with color theme */
+    body {
+        background-color: var(--background-color);
+        color: var(--paragraph-color);
+        margin: 0; /* Removing default margin */
+        font-family: Arial, sans-serif; /* Adding font */
+    }
+
+    .container {
+        width: 70%;
+        margin: 20px auto;
+        background-color: var(--container-form-color); /* Applying container form color */
+        padding: 20px; /* Adjust padding as needed */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2, h4 {
+        color: var(--headline-color);
+    }
+
+    .dl-horizontal dt {
+        color: var(--headline-color); /* Applying headline color to dt */
+    }
+
+    .dl-horizontal dd {
+        color: var(--paragraph-color); /* Applying paragraph color to dd */
+    }
+
+    .btn {
+        padding: 8px 15px;
+        background-color: var(--button-color);
+        color: var(--button-text-color);
+        text-decoration: none;
+        margin: 0 10px 0 10px; /* Adjusting margin for buttons */
+    }
+
+        .btn:hover {
+            background-color: #e0e0e0;
+            color: var(--button-text-color);
+        }
+
+    /* Applying the Edit button style to the Back to List button */
+    .btn-back-to-list {
+        padding: 8px 15px;
+        background-color: var(--button-color);
+        color: var(--button-text-color);
+        text-decoration: none;
+    }
+
+        .btn-back-to-list:hover {
+            background-color: #e0e0e0;
+            color: var(--button-text-color);
+        }
+</style>
